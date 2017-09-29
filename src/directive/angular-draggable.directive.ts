@@ -20,6 +20,7 @@ export class AngularDraggableDirective implements OnInit {
   @Output() stopped = new EventEmitter<any>();
 
   @Input() handle: HTMLElement;
+  @Input() bounds: HTMLElement;
 
   @Input()
   set ngDraggable(setting: any) {
@@ -94,6 +95,7 @@ export class AngularDraggableDirective implements OnInit {
   }
 
   private putBack() {
+    console.log(this.el.nativeElement.getPropertyValue('transform'));
     if (this.oldZIndex) {
       this.renderer.setElementStyle(this.el.nativeElement, 'z-index', this.oldZIndex);
     } else {
